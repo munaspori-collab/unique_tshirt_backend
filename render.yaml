@@ -13,5 +13,5 @@ services:
       - key: MONGODB_URI
         sync: false
       - key: FRONTEND_ORIGIN
-        sync: false
+        value: https://munaspori-collab.github.io/unique_tshirt_frontend
     healthCheckPath: /health
