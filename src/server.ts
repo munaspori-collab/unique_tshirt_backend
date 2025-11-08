@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import { connectMongo } from './db/mongo';
 import productsRouter from './routes/products';
+import seedRouter from './routes/seed';
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.get('/health', (_req, res) => {
 
 // API routes
 app.use('/api/products', productsRouter);
+app.use('/api/seed', seedRouter);
 
 // Root
 app.get('/', (_req, res) => {
