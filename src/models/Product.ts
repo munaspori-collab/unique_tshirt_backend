@@ -6,7 +6,7 @@ export interface IProduct extends mongoose.Document {
   description: string;
   price: number;
   images: string[];
-  category: 'men' | 'women' | 'unisex' | 'limited' | 'seasonal';
+  category: 'limited' | 'seasonal';
   sizes: string[];
   colors: string[];
   inStock: boolean;
@@ -24,7 +24,7 @@ const ProductSchema = new Schema<IProduct>(
     description: { type: String, required: true },
     price: { type: Number, required: true },
     images: { type: [String], default: [] },
-    category: { type: String, enum: ['men', 'women', 'unisex', 'limited', 'seasonal'], required: true },
+    category: { type: String, enum: ['limited', 'seasonal'], required: true },
     sizes: { type: [String], default: ['S','M','L'] },
     colors: { type: [String], default: [] },
     inStock: { type: Boolean, default: true },
