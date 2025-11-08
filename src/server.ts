@@ -6,6 +6,7 @@ import { connectMongo } from './db/mongo';
 import productsRouter from './routes/products';
 import seedRouter from './routes/seed';
 import authRouter from './routes/auth';
+import uploadRouter from './routes/upload';
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.get('/health', (_req, res) => {
 app.use('/api/auth', authRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/seed', seedRouter);
+app.use('/api/upload', uploadRouter);
 
 // Root
 app.get('/', (_req, res) => {

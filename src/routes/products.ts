@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { Product } from '../models/Product';
+import { authenticateToken, requireAdmin } from '../middleware/auth';
 
 const router = Router();
 
@@ -28,8 +29,8 @@ router.get('/:slug', async (req, res) => {
   }
 });
 
-// POST /api/products (create new product)
-router.post('/', async (req, res) => {
+// POST /api/products (create new product - admin only)
+router.post('/', authenticateToken, requireAdmin, async (req, res) => {
   try {
     const product = new Product(req.body);
     await product.save();
@@ -40,8 +41,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT /api/products/:id (update product)
-router.put('/:id', async (req, res) => {
+// PUT /api/products/:id (update product - admin only)
+router.put('/:id', authenticateToken, requireAdmin, async (req, res) => {
   try {
     const product = await Product.findByIdAndUpdate(
       req.params.id,
@@ -56,8 +57,8 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE /api/products/:id (delete product)
-router.delete('/:id', async (req, res) => {
+// DELETE /api/products/:id (delete product - admin only)
+router.delete('/:id', authenticateToken, requireAdmin, async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
     if (!product) return res.status(404).json({ ok: false, error: 'Not Found' });
