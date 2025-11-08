@@ -7,6 +7,7 @@ import productsRouter from './routes/products';
 import seedRouter from './routes/seed';
 import authRouter from './routes/auth';
 import uploadRouter from './routes/upload';
+import wishlistRouter from './routes/wishlist';
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/seed', seedRouter);
 app.use('/api/upload', uploadRouter);
+app.use('/api/wishlist', wishlistRouter);
 
 // Root
 app.get('/', (_req, res) => {
