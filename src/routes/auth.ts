@@ -55,7 +55,7 @@ router.post('/google', async (req, res) => {
 
     // Generate JWT
     const jwtToken = generateToken({
-      userId: user._id.toString(),
+      userId: String(user._id),
       email: user.email,
       role: user.role,
     });
